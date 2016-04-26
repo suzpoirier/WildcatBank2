@@ -17,7 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, AccountTabs.OnFragmentInteractionListener, ButtonSignIn.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, StartPage.OnFragmentInteractionListener, AccountTabs.OnFragmentInteractionListener, ButtonSignIn.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_settings) {
 
         } else if (id == R.id.nav_locations) {
+            launchLocateActivity(findViewById(R.id.locationButton));
 
         }
 
