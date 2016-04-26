@@ -1,6 +1,7 @@
 package com.wildcatbank2;
 
 import android.Manifest;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
@@ -38,7 +39,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Hashtable;
 
-public class LocateActivity extends Activity implements AccountTabs.OnFragmentInteractionListener, GoogleApiClient.ConnectionCallbacks,
+public class LocateActivity extends Fragment implements AccountTabs.OnFragmentInteractionListener, GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     private GoogleMap map;
@@ -46,17 +47,20 @@ public class LocateActivity extends Activity implements AccountTabs.OnFragmentIn
     private Location currentLocation;
     private Marker marker;
     private Hashtable bankMarkers;
+    private View view;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_locate);
-
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        view = inflater.inflate(R.layout.activity_locate, container, false);
+        return view;
     }
 
+
     private void initializeMap() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+        if (ContextCompat.checkSelfPermission(MainActivity.getInstance(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(MainActivity.getInstance(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
         }
         if (map == null){
             map = ((MapFragment)getFragmentManager().findFragmentById(R.id.map)).getMap();
@@ -64,7 +68,7 @@ public class LocateActivity extends Activity implements AccountTabs.OnFragmentIn
             criteria.setAccuracy(Criteria.ACCURACY_COARSE);
             criteria.setCostAllowed(false);
 
-            LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+            LocationManager lm = (LocationManager)MainActivity.getInstance().getSystemService(Context.LOCATION_SERVICE);
             String provider = lm.getBestProvider(criteria, false);
 
             Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
@@ -83,12 +87,12 @@ public class LocateActivity extends Activity implements AccountTabs.OnFragmentIn
             map.getUiSettings().setCompassEnabled(true);
             map.getUiSettings().setMyLocationButtonEnabled(true);
             map.getUiSettings().setRotateGesturesEnabled(true);
-            MapsInitializer.initialize(this);
+            MapsInitializer.initialize(MainActivity.getInstance());
 
 
         }
         if (mGoogleApiClient == null){
-            mGoogleApiClient = new GoogleApiClient.Builder(this)
+            mGoogleApiClient = new GoogleApiClient.Builder(MainActivity.getInstance())
                     .addApi(LocationServices.API)
                     .addOnConnectionFailedListener(this)
                     .addConnectionCallbacks(this)
@@ -109,7 +113,7 @@ public class LocateActivity extends Activity implements AccountTabs.OnFragmentIn
         }
     }
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         if (mGoogleApiClient!= null && mGoogleApiClient.isConnected()) {
             mGoogleApiClient.disconnect();
@@ -120,11 +124,11 @@ public class LocateActivity extends Activity implements AccountTabs.OnFragmentIn
 
     }
     public void selectAddressButton(View view) {
-        TextView addressText = (TextView)findViewById(R.id.editText);
+        TextView addressText = (TextView)view.findViewById(R.id.editText);
         addressText.setEnabled(true);
     }
     public void selectLocationButton(View view) {
-        TextView addressText = (TextView)findViewById(R.id.editText);
+        TextView addressText = (TextView)view.findViewById(R.id.editText);
         addressText.setEnabled(false);
 
     }

@@ -1,6 +1,8 @@
 package com.wildcatbank2;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,12 +21,16 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, StartPage.OnFragmentInteractionListener, AccountTabs.OnFragmentInteractionListener, ButtonSignIn.OnFragmentInteractionListener {
 
+    private static MainActivity instance;
+
+    public static MainActivity getInstance() {return instance;}
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        instance = this;
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +49,17 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        if (findViewById(R.id.content_frame) != null){
+            if (savedInstanceState != null){
+                return;
+            }
+
+            StartPage startPageFragment = new StartPage();
+
+            startPageFragment.setArguments(getIntent().getExtras());
+            getFragmentManager().beginTransaction().add(R.id.content_frame, startPageFragment).commit();
+        }
     }
 
     @Override
@@ -114,8 +131,16 @@ public class MainActivity extends AppCompatActivity
         dialog.show(fm, "fragment_contact_us");
     }
     public void launchLocateActivity(View view){
-        Intent intent = new Intent(this, LocateActivity.class);
-        startActivity(intent);
+        Fragment locateFragment = new LocateActivity();
+        Bundle args = new Bundle();
+
+        locateFragment.setArguments(args);
+
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_frame, locateFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
     }
 
 }

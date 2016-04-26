@@ -9,30 +9,25 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.wildcatbank2.LocateActivity">
 
-    <fragment android:name="com.wildcatbank2.AccountTabs"
-        android:id="@+id/accounttabs"
-        android:layout_width="match_parent"
-        android:layout_height="58dp"
-        tools:layout="@layout/fragment_account_tabs" />
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Locate a branch or ATM near you"
         android:id="@+id/textView2"
-        android:layout_below="@+id/accounttabs"
-        android:layout_centerHorizontal="true"
         android:background="#40479b"
         android:textColor="#FFFFFF"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="42dp" />
 
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:id="@+id/radioGroup"
         android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/radioGroup">
+        android:background="#FFFFFF">
 
         <RadioButton
             android:layout_width="wrap_content"

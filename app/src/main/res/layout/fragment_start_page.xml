@@ -4,14 +4,7 @@
     android:layout_height="match_parent"
     tools:context="com.wildcatbank2.StartPage">
 
-    <fragment android:name="com.wildcatbank2.AccountTabs"
-        android:id="@+id/accounttabs"
-        android:layout_width="match_parent"
-        android:layout_height="58dp"
-        tools:layout="@layout/fragment_account_tabs"
-        android:layout_marginTop="58dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+
 
     <fragment android:name="com.wildcatbank2.ButtonSignIn"
         android:id="@+id/buttonsignin"
@@ -30,12 +23,12 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/wildcat_bank"
         android:id="@+id/textView"
-        android:layout_below="@+id/accounttabs"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="31dp"
         android:textColor="#5f96e3"
         android:textIsSelectable="false"
-        android:textSize="42sp" />
+        android:textSize="42sp"
+        android:layout_above="@+id/buttonsignin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="158dp" />
 </RelativeLayout>
 
 
