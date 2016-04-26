@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.wildcatbank2.LocateActivity">
+
+    <fragment android:name="com.wildcatbank2.AccountTabs"
+        android:id="@+id/accounttabs"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        tools:layout="@layout/fragment_account_tabs" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Locate a branch or ATM near you"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/accounttabs"
+        android:layout_centerHorizontal="true"
+        android:background="#40479b"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/radioGroup">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current Location"
+            android:id="@+id/locationButton"
+            android:onClick="selectLocationButton"
+            android:checked="true" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:onClick="selectAddressButton"
+            android:id="@+id/addressButton"
+            android:checked="false" />
+    </RadioGroup>
+
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_below="@+id/radioGroup"
+        android:layout_centerHorizontal="true"
+        android:enabled="false"
+        android:editable="true"
+        android:text="Enter Address"
+        android:textIsSelectable="true"
+        android:selectAllOnFocus="false" />
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:id="@+id/map"
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/editText" />
+</RelativeLayout>

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Wildcat Bank</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="contact_button">Contact</string>
+    <string name="locate_button">Locate</string>
+    <string name="sign_in_button">Sign In</string>
+    <string name="wildcat_bank">Wildcat Bank</string>
+    <string name="contact_us_title">Contact Us</string>
+    <string name="contact_us">Contact us at <a href="mailto:support@wildcat.com?Subject=Bank%20Help" target="_top" />help@wildcat.com</string>
+    <string name="call_us">Call us at (603)555-5555</string>
+    <string name="close_contact">Close Window</string>
+    <string name="title_activity_locate">LocateActivity</string>
+</resources>

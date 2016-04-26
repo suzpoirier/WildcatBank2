@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_pay_bills"
+
+            android:title="Pay Bills" />
+
+    </group>
+
+    <item android:title="Move Money">
+        <menu>
+            <item
+                android:id="@+id/nav_transfer"
+
+                android:title="Transfer Money" />
+            <item
+                android:id="@+id/nav_deposit"
+
+                android:title="Deposit Checks" />
+        </menu>
+    </item>
+    <item android:title="Additional Services">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:title="Settings" />
+            <item
+                android:id="@+id/nav_locations"
+                android:title="Locations" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,45 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    tools:context="com.wildcatbank2.ButtonSignIn">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="launchDialog"
+        android:text="@string/contact_button"
+        android:id="@+id/button"
+        android:layout_gravity="start"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#5f96e3"
+        android:textColor="#FFFFFF"
+        android:clickable="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_in_button"
+        android:id="@+id/button2"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="20dp"
+        android:background="#5f96e3"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/locate_button"
+        android:id="@+id/button3"
+        android:onClick="launchLocateActivity"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="end"
+        android:background="#5f96e3"
+        android:longClickable="true"
+        android:textColor="#FFFFFF" />
+
+</FrameLayout>
