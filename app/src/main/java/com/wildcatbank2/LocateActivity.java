@@ -49,6 +49,7 @@ public class LocateActivity extends Fragment implements AccountTabs.OnFragmentIn
     private Hashtable bankMarkers;
     private View view;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,12 +59,13 @@ public class LocateActivity extends Fragment implements AccountTabs.OnFragmentIn
     }
 
 
-    private void initializeMap() {
+    public void initializeMap() {
         if (ContextCompat.checkSelfPermission(MainActivity.getInstance(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(MainActivity.getInstance(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
         }
-        if (map == null){
-            map = ((MapFragment)getFragmentManager().findFragmentById(R.id.map)).getMap();
+        if (map == null  && getChildFragmentManager().findFragmentById(R.id.map) != null){
+            map = ((MapFragment)getChildFragmentManager().findFragmentById(R.id.map)).getMap();
+
             Criteria criteria = new Criteria();
             criteria.setAccuracy(Criteria.ACCURACY_COARSE);
             criteria.setCostAllowed(false);
@@ -91,7 +93,7 @@ public class LocateActivity extends Fragment implements AccountTabs.OnFragmentIn
 
 
         }
-        if (mGoogleApiClient == null){
+        if (mGoogleApiClient == null && map != null){
             mGoogleApiClient = new GoogleApiClient.Builder(MainActivity.getInstance())
                     .addApi(LocationServices.API)
                     .addOnConnectionFailedListener(this)
@@ -102,12 +104,13 @@ public class LocateActivity extends Fragment implements AccountTabs.OnFragmentIn
 
 
     }
-    public void onResume () {
-        super.onResume();
+    public void onStart () {
+        super.onStart();
         try {
             // Loading map
             initializeMap();
-            mGoogleApiClient.connect();
+            if (mGoogleApiClient != null)
+                mGoogleApiClient.connect();
         } catch (Exception e) {
             e.printStackTrace();
         }
