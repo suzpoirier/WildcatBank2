@@ -68,7 +68,12 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            FragmentManager fm = getFragmentManager();
+            if (fm.getBackStackEntryCount() > 0) {
+                fm.popBackStack();
+            } else {
+                super.onBackPressed();
+            }
         }
     }
 
@@ -142,5 +147,6 @@ public class MainActivity extends AppCompatActivity
         transaction.commit();
 
     }
+
 
 }
