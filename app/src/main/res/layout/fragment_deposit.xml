@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="108dp"
+    android:background="#FFFFFF"
+    tools:context="com.wildcatbank2.Deposit">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Deposits"
+        android:id="@+id/textView3"
+        android:background="#40479b"
+        android:textColor="#FFFFFF"
+
+        android:textSize="20dp"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center_horizontal|top"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        android:id="@+id/imageView2"
+
+        android:layout_gravity="left|center_vertical"
+        android:background="#385cd1"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/button6" />
+
+    <ImageView
+        android:layout_width="133dp"
+        android:layout_height="133dp"
+
+        android:id="@+id/imageView3"
+        android:layout_gravity="right|center_vertical"
+        android:background="#385cd1"
+        android:layout_above="@+id/button5"
+        android:layout_alignEnd="@+id/button4" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check Front"
+        android:layout_marginLeft="40dp"
+        android:id="@+id/button4"
+        android:layout_gravity="left|bottom"
+        android:background="#385cd1"
+        android:textColor="#FFFFFF"
+        android:layout_alignTop="@+id/button5"
+        android:layout_toStartOf="@+id/button6" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check Back"
+        android:layout_marginRight="40dp"
+        android:id="@+id/button5"
+        android:background="#385cd1"
+        android:layout_gravity="right|bottom"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/imageView2"
+        android:layout_toEndOf="@+id/button6"
+        android:layout_marginTop="46dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/button6"
+        android:background="#385cd1"
+        android:layout_below="@+id/button4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp"
+        android:textColor="#FFFFFF" />
+</RelativeLayout>

@@ -19,7 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, StartPage.OnFragmentInteractionListener, AccountTabs.OnFragmentInteractionListener, ButtonSignIn.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, Deposit.OnFragmentInteractionListener, StartPage.OnFragmentInteractionListener, AccountTabs.OnFragmentInteractionListener, ButtonSignIn.OnFragmentInteractionListener {
 
     private static MainActivity instance;
 
@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_transfer) {
 
         } else if (id == R.id.nav_deposit) {
+            launchDepositFragment();
 
         } else if (id == R.id.nav_settings) {
 
@@ -143,6 +144,18 @@ public class MainActivity extends AppCompatActivity
 
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.content_frame, locateFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
+    }
+    private void launchDepositFragment(){
+        Fragment deposit = new Deposit();
+        Bundle args = new Bundle();
+
+        deposit.setArguments(args);
+
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_frame, deposit);
         transaction.addToBackStack(null);
         transaction.commit();
 
