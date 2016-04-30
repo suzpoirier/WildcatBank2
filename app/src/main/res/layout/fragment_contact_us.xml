@@ -15,7 +15,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="280dp"
+
         android:layout_gravity="center">
         <TextView
             android:layout_marginBottom="40dp"
@@ -25,7 +26,7 @@
             android:layout_marginTop="31dp"
             android:textIsSelectable="false"
             android:textSize="42sp"
-            android:textColor="#5f96e3"
+            android:textColor="#1b304b"
             android:layout_gravity="center_horizontal|top"
             android:autoText="true" />
         <TextView
@@ -33,7 +34,7 @@
             android:layout_height="wrap_content"
             android:text="@string/call_us"
             android:id="@+id/call_button"
-            android:textColor="#5f96e3"
+            android:textColor="#1b304b"
             android:background="#00ffffff"
             android:layout_gravity="center_horizontal"
             android:autoLink="phone"
@@ -47,7 +48,7 @@
             android:autoLink="email"
             android:id="@+id/contact_button"
             android:background="#00ffffff"
-            android:textColor="#5f96e3"
+            android:textColor="#1b304b"
             android:layout_gravity="center_horizontal"
             android:clickable="true"
             android:textSize="18dp" />

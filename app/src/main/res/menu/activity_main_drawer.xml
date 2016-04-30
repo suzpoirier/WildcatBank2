@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_pay_bills"
-
+            android:icon="@drawable/make_payment"
             android:title="Pay Bills" />
 
 
@@ -13,7 +13,7 @@
         <menu>
             <item
                 android:id="@+id/nav_transfer"
-                android:icon="@drawable/transfer_action_name"
+                android:icon="@drawable/transfer_funds"
                 android:title="Transfer Money" />
             <item
                 android:id="@+id/nav_deposit"

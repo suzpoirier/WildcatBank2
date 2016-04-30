@@ -32,11 +32,13 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class LocateActivity extends Fragment implements AccountTabs.OnFragmentInteractionListener, GoogleApiClient.ConnectionCallbacks,
@@ -162,6 +164,13 @@ public class LocateActivity extends Fragment implements AccountTabs.OnFragmentIn
             }
             marker = map.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(), location.getLongitude())).title("Marker"));
             currentLocation = location;
+
+             if (bankMarkers == null) {
+                bankMarkers = new Hashtable(10);
+                 Marker m = map.addMarker(new MarkerOptions()
+                         .position(new LatLng(42.9518159, -71.4792087)).title("ATM- TD Bank"));
+                 bankMarkers.put("bank1", m);
+             }
             updateMapCamera();
         }
 
@@ -174,6 +183,13 @@ public class LocateActivity extends Fragment implements AccountTabs.OnFragmentIn
         if (marker != null) {
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             builder.include(marker.getPosition());
+            if (bankMarkers.size() > 0) {
+                // Now that all of the markers are loaded zoom the map to include them all
+                ArrayList<Marker> pts = new ArrayList<Marker>(bankMarkers.values());
+                for (Marker marker : pts) {
+                    builder.include(marker.getPosition());
+                }
+            }
             LatLngBounds bounds = builder.build();
             int padding = 250;
             CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);

@@ -57,8 +57,11 @@ public class ContactUs extends DialogFragment {
 
             }
         });
+
         builder.setView(getLayout(LayoutInflater.from(getContext()), mContainer));
-        return builder.create();
+        Dialog d = builder.create();
+        d.getWindow().setBackgroundDrawableResource(R.drawable.dialog_shape);
+        return d;
     }
 
     private View getLayout(LayoutInflater inflater, ViewGroup container){

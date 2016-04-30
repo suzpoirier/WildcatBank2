@@ -20,7 +20,7 @@
         android:layout_height="match_parent"
         android:id="@+id/transferButton"
         android:layout_gravity="center"
-        android:src="@drawable/transfer_action_name"
+        android:src="@drawable/transfer_funds"
         android:background="#fbf8f8" />
 
     <ImageButton
