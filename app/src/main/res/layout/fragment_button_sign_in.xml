@@ -15,7 +15,7 @@
         android:layout_gravity="start"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:background="#5f96e3"
+        android:background="@drawable/button_gradient"
         android:textColor="#FFFFFF"
         android:clickable="true" />
 
@@ -27,7 +27,7 @@
         android:layout_gravity="center_horizontal|top"
         android:onClick="launchSignIn"
         android:layout_marginTop="20dp"
-        android:background="#5f96e3"
+        android:background="@drawable/button_gradient"
         android:textColor="#FFFFFF" />
 
     <Button
@@ -39,7 +39,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         android:layout_gravity="end"
-        android:background="#5f96e3"
+        android:background="@drawable/button_gradient"
         android:longClickable="true"
         android:textColor="#FFFFFF" />
 
