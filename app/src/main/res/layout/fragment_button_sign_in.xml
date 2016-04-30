@@ -23,8 +23,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sign_in_button"
-        android:id="@+id/button2"
+        android:id="@+id/signIn"
         android:layout_gravity="center_horizontal|top"
+        android:onClick="launchSignIn"
         android:layout_marginTop="20dp"
         android:background="#5f96e3"
         android:textColor="#FFFFFF" />

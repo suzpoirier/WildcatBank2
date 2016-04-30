@@ -3,7 +3,6 @@ package com.wildcatbank2;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -19,7 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, Deposit.OnFragmentInteractionListener, StartPage.OnFragmentInteractionListener, AccountTabs.OnFragmentInteractionListener, ButtonSignIn.OnFragmentInteractionListener {
+        implements Login.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener, Deposit.OnFragmentInteractionListener, StartPage.OnFragmentInteractionListener, AccountTabs.OnFragmentInteractionListener, ButtonSignIn.OnFragmentInteractionListener {
 
     private static MainActivity instance;
 
@@ -147,6 +146,18 @@ public class MainActivity extends AppCompatActivity
         transaction.addToBackStack(null);
         transaction.commit();
 
+    }
+
+    public void launchSignIn(View view){
+        Fragment signInFragment = new Login();
+        Bundle args = new Bundle();
+
+        signInFragment.setArguments(args);
+
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_frame, signInFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
     private void launchDepositFragment(){
         Fragment deposit = new Deposit();
